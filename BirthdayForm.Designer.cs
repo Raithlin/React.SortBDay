@@ -69,13 +69,16 @@ namespace React.SortBDay
 			// 
 			// BirthdayGridView
 			// 
+			this.BirthdayGridView.AllowUserToAddRows = false;
+			this.BirthdayGridView.AllowUserToDeleteRows = false;
 			this.BirthdayGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.BirthdayGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.BirthdayGridView.Location = new System.Drawing.Point(12, 288);
+			this.BirthdayGridView.Location = new System.Drawing.Point(12, 57);
 			this.BirthdayGridView.Name = "BirthdayGridView";
-			this.BirthdayGridView.Size = new System.Drawing.Size(776, 150);
+			this.BirthdayGridView.ReadOnly = true;
+			this.BirthdayGridView.Size = new System.Drawing.Size(776, 381);
 			this.BirthdayGridView.TabIndex = 1;
 			// 
 			// AddButton
