@@ -97,6 +97,9 @@
     <Compile Include="Common\BirthdayList.cs" />
     <Compile Include="Common\FileIO.cs" />
     <Compile Include="Common\Log.cs" />
+    <Compile Include="Comparers\SortByDateofBirth.cs" />
+    <Compile Include="Comparers\SortByFirstName.cs" />
+    <Compile Include="Comparers\SortByLastName.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddPersonForm.resx">

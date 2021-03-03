@@ -9,70 +9,46 @@ namespace React.SortBDay.Common
 	internal class BirthdayList
 	{
 		public List<Birthday> Birthdays { get; set; }
+		public SortBy SortedBy { get; set; }
 
 		public BirthdayList()
 		{
 			Birthdays = new List<Birthday>();
 		}
 
-		public void Sort(SortBy sortColumn)
+		public decimal AverageAge
 		{
-			List<Birthday> sortedList = new List<Birthday>();
+			get { return GetAverageAge(); }
+		}
+
+		private decimal GetAverageAge()
+		{
+			if (Birthdays?.Count == 0) return 0;
+			decimal totalAge = 0;
 			foreach (var birthday in Birthdays)
 			{
-				if (sortedList.Count == 0)
-				{
-					sortedList.Add(birthday);
-					continue;
-				}
-				bool inserted = false;
-				switch (sortColumn)
-				{
-					case SortBy.FirstName:
-						for (int i = 0; i < sortedList.Count; i++)
-						{
-							if (Convert.ToChar(birthday.FirstName.Substring(0, 1)) <= Convert.ToChar(sortedList[i].FirstName.Substring(0, 1)))
-							{
-								sortedList.Insert(i - 1, birthday);
-								inserted = true;
-								break;
-							}
-						}
-						if (!inserted)
-							sortedList.Add(birthday);
-						break;
+				totalAge += birthday.Age;
+			}
+			return totalAge / Birthdays.Count;
+		}
 
-					case SortBy.LastName:
-						for (int i = 0; i < sortedList.Count; i++)
-						{
-							if (Convert.ToChar(birthday.LastName.Substring(0, 1)) <= Convert.ToChar(sortedList[i].LastName.Substring(0, 1)))
-							{
-								sortedList.Insert(i - 1, birthday);
-								inserted = true;
-								break;
-							}
-						}
-						if (!inserted)
-							sortedList.Add(birthday);
-						break;
+		public void Sort(SortBy sortColumn)
+		{
+			SortedBy = sortColumn;
 
-					case SortBy.DateOfBirth:
-						for (int i = 0; i < sortedList.Count; i++)
-						{
-							if (birthday.DateofBirth <= sortedList[i].DateofBirth)
-							{
-								sortedList.Insert(i - 1, birthday);
-								inserted = true;
-								break;
-							}
-						}
-						if (!inserted)
-							sortedList.Add(birthday);
-						break;
+			switch (SortedBy)
+			{
+				case SortBy.LastName:
+					Birthdays.Sort(new SortByLastName());
+					break;
 
-					default:
-						break;
-				}
+				case SortBy.DateOfBirth:
+					Birthdays.Sort(new SortByDateofBirth());
+					break;
+
+				default:
+					Birthdays.Sort(new SortByFirstName());
+					break;
 			}
 		}
 

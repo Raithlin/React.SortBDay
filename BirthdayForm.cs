@@ -91,9 +91,24 @@ namespace React.SortBDay
 
 		private void SetBirthdays()
 		{
-			BindingSource bs = new BindingSource();
-			bs.DataSource = birthdayList.Birthdays;
-			BirthdayGridView.DataSource = bs;
+			BirthdayGridView.DataSource = new BindingSource
+			{
+				DataSource = birthdayList.Birthdays
+			};
+			SetAverageAge();
+		}
+
+		private void SetAverageAge()
+		{
+			AverageAgeLabel.Text = birthdayList.Birthdays.Count == 0 ? string.Empty : $"Average age: {birthdayList.AverageAge:N0} years";
+		}
+
+		private void BirthdayGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+		{
+			if (e.ColumnIndex == 3) return; //No sorting on Age because we can
+
+			birthdayList.Sort((BirthdayList.SortBy)e.ColumnIndex);
+			SetBirthdays();
 		}
 	}
 }

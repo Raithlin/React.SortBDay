@@ -34,6 +34,7 @@ namespace React.SortBDay
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.BirthdayGridView = new System.Windows.Forms.DataGridView();
 			this.AddButton = new System.Windows.Forms.Button();
+			this.AverageAgeLabel = new System.Windows.Forms.Label();
 			this.menuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.BirthdayGridView)).BeginInit();
 			this.SuspendLayout();
@@ -44,7 +45,7 @@ namespace React.SortBDay
             this.fileToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(730, 24);
 			this.menuStrip1.TabIndex = 0;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -71,20 +72,26 @@ namespace React.SortBDay
 			// 
 			this.BirthdayGridView.AllowUserToAddRows = false;
 			this.BirthdayGridView.AllowUserToDeleteRows = false;
+			this.BirthdayGridView.AllowUserToResizeRows = false;
 			this.BirthdayGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.BirthdayGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
 			this.BirthdayGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.BirthdayGridView.Location = new System.Drawing.Point(12, 57);
+			this.BirthdayGridView.MultiSelect = false;
 			this.BirthdayGridView.Name = "BirthdayGridView";
 			this.BirthdayGridView.ReadOnly = true;
-			this.BirthdayGridView.Size = new System.Drawing.Size(776, 381);
+			this.BirthdayGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.BirthdayGridView.Size = new System.Drawing.Size(706, 389);
 			this.BirthdayGridView.TabIndex = 1;
+			this.BirthdayGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.BirthdayGridView_ColumnHeaderMouseClick);
 			// 
 			// AddButton
 			// 
 			this.AddButton.AccessibleDescription = "Add a person to the list";
 			this.AddButton.AccessibleName = "Add Person";
+			this.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
 			this.AddButton.Location = new System.Drawing.Point(13, 28);
 			this.AddButton.Name = "AddButton";
 			this.AddButton.Size = new System.Drawing.Size(75, 23);
@@ -93,11 +100,23 @@ namespace React.SortBDay
 			this.AddButton.UseVisualStyleBackColor = true;
 			this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
 			// 
+			// AverageAgeLabel
+			// 
+			this.AverageAgeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.AverageAgeLabel.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.AverageAgeLabel.Location = new System.Drawing.Point(518, 28);
+			this.AverageAgeLabel.Name = "AverageAgeLabel";
+			this.AverageAgeLabel.Size = new System.Drawing.Size(200, 13);
+			this.AverageAgeLabel.TabIndex = 3;
+			this.AverageAgeLabel.Text = "label1";
+			this.AverageAgeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
 			// BirthdayForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.ClientSize = new System.Drawing.Size(730, 458);
+			this.Controls.Add(this.AverageAgeLabel);
 			this.Controls.Add(this.AddButton);
 			this.Controls.Add(this.BirthdayGridView);
 			this.Controls.Add(this.menuStrip1);
@@ -120,6 +139,7 @@ namespace React.SortBDay
 		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
 		private System.Windows.Forms.DataGridView BirthdayGridView;
 		private System.Windows.Forms.Button AddButton;
+		private System.Windows.Forms.Label AverageAgeLabel;
 	}
 }
 
